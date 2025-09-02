@@ -9,21 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->string('kode_transaksi')->unique();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->decimal('total', 12, 2);
-            $table->decimal('bayar', 12, 2);
-            $table->decimal('kembali', 12, 2);
-            $table->string('status')->default('selesai'); // tambahkan default
+            $table->decimal('total', 14, 2)->default(0);
+            $table->decimal('bayar', 14, 2)->default(0);
+            $table->decimal('kembali', 14, 2)->default(0);
+            $table->string('status')->default('selesai');
             $table->timestamps();
             $table->softDeletes();
         });
     }
-
 
     /**
      * Reverse the migrations.

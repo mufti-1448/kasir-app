@@ -76,7 +76,7 @@ class TransaksiController extends Controller
             Barang::find($barangId)->decrement('stok', $request->jumlah[$k]);
         }
 
-        return redirect()->route('transaksis.show', $transaksi)
+        return redirect()->route('transaksis.show', ['transaksi' => $transaksi->id])
             ->with('success', 'Transaksi berhasil disimpan!');
     }
 

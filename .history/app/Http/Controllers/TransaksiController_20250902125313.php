@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-
 class TransaksiController extends Controller
 {
     /**
@@ -55,12 +54,7 @@ class TransaksiController extends Controller
             'total' => $total,
             'bayar' => $request->bayar,
             'kembali' => $kembali,
-            'status' => 'selesai',
         ]);
-
-        if (!is_object($transaksi)) {
-            return redirect()->back()->withErrors('Gagal menyimpan transaksi.');
-        }
 
         foreach ($request->barang_id as $k => $barangId) {
             $subtotal = $request->jumlah[$k] * $request->harga_satuan[$k];
@@ -76,7 +70,7 @@ class TransaksiController extends Controller
             Barang::find($barangId)->decrement('stok', $request->jumlah[$k]);
         }
 
-        return redirect()->route('transaksis.show', $transaksi)
+        return redirect()->route('transaksis.show', $transaksi->id)
             ->with('success', 'Transaksi berhasil disimpan!');
     }
 
