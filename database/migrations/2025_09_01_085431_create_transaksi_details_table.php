@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->decimal('harga_satuan', 12, 2);
             $table->decimal('subtotal', 14, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -40,7 +40,7 @@
                         <table class="table table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>Kategori</th>
                                     <th>Harga Beli</th>

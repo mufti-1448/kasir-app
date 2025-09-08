@@ -26,7 +26,7 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $barangs = Barang::where('stok', '>', 0)->get();
+        $barangs = Barang::whereNull('deleted_at')->where('stok', '>', 0)->get();
         return view('transaksis.create', compact('barangs'));
     }
 
@@ -36,7 +36,6 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_pembeli' => 'nullable|string|max:255',
             'barang_id' => 'required|array|min:1',
             'barang_id.*' => 'required|exists:barangs,id',
             'jumlah' => 'required|array|min:1',
@@ -77,7 +76,6 @@ class TransaksiController extends Controller
             $transaksi = Transaksi::create([
                 'kode_transaksi' => 'TRX-' . now()->format('YmdHis') . '-' . Str::random(4),
                 'user_id' => auth()->id(),
-                'nama_pembeli' => $request->nama_pembeli,
                 'total' => $total,
                 'bayar' => $request->bayar,
                 'kembali' => $kembali,
@@ -144,7 +142,7 @@ class TransaksiController extends Controller
                 if ($barang) {
                     $barang->increment('stok', $detail->jumlah);
                 }
-                $detail->delete();
+                //$detail->delete();
             }
 
             $transaksi->delete();
