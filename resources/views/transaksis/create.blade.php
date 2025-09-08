@@ -21,14 +21,6 @@
                             <div class="row mb-4">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="nama_pembeli">Nama Pembeli</label>
-                                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control"
-                                            placeholder="Masukkan nama pembeli (opsional)"
-                                            value="{{ old('nama_pembeli') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <label for="tanggal">Tanggal</label>
                                         <input type="text" class="form-control" value="{{ now()->format('d/m/Y H:i') }}"
                                             readonly>

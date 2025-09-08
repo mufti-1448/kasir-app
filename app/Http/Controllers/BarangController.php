@@ -111,10 +111,8 @@ class BarangController extends Controller
      */
     public function destroy(Barang $barang)
     {
-        // Hapus permanen (hard delete)
-        $barang->forceDelete();
-
+        $barang->delete(); // hanya soft delete
         return redirect()->route('barangs.index')
-            ->with('success', 'Barang berhasil dihapus permanen!');
+            ->with('success', 'Barang berhasil dihapus (soft delete).');
     }
 }

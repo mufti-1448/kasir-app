@@ -17,10 +17,9 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Kode Transaksi</th>
                                     <th>User</th>
-                                    <th>Nama Pembeli</th> <!-- Kolom baru -->
                                     <th>Total</th>
                                     <th>Status</th>
                                     <th>Tanggal</th>
@@ -34,7 +33,6 @@
                                         </td>
                                         <td>{{ $trx->kode_transaksi }}</td>
                                         <td>{{ $trx->user->name }}</td>
-                                        <td>{{ $trx->nama_pembeli ?? '-' }}</td> <!-- Tampilkan nama pembeli -->
                                         <td>Rp {{ number_format($trx->total, 0, ',', '.') }}</td>
                                         <td>{{ ucfirst($trx->status) }}</td>
                                         <td>{{ $trx->created_at->format('d-m-Y H:i') }}</td>
